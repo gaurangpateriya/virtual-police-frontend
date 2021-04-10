@@ -1,0 +1,69 @@
+@import '../../assets/styles/variables.scss';
+@import '../../assets/styles/_mixins.scss';
+
+//TExtInput.js
+.input-label-div {
+	position: relative;
+	overflow: hidden;
+	margin: 10px 0;
+	height: 2.5rem;
+
+	.inp-label {
+		position: absolute;
+		top: 0.5rem;
+		font-size: 0.8rem;
+		left: 10px;
+		color: rgba(0, 0, 0, 0.5);
+		transition: all 0.2s;
+		pointer-events: none;
+	}
+
+	.inp {
+		width: 100%;
+		border-radius: 5px;
+		height: 100%;
+		bottom: 0;
+		padding-top: 2%;
+		padding-left: 8px;
+		color: black;
+		font-size: 0.8rem;
+		/* transition: all linear 0.1s; */
+		border: solid 1px rgba(27, 9, 9, 0.1);
+	}
+
+	.inp:disabled+.inp-label {
+		outline: none;
+		color: black;
+		top: 0;
+		font-size: 0.7rem;
+	}
+
+	.inp:not(:placeholder-shown)+.inp-label {
+		// /* if placeholder is shown - meaning - no value in input */
+		outline: none;
+		color: black;
+		top: 0;
+		font-size: 0.7rem;
+	}
+
+	.inp:focus+.inp-label {
+		outline: none;
+		color: black;
+		top: 0;
+		font-size: 0.7rem;
+	}
+}
+
+//Loder.js
+.loader-div {
+	display: grid;
+	place-items: center;
+
+	height: 100%;
+	background-color: rgba(white, 0.3);
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+}

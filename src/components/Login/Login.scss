@@ -1,0 +1,94 @@
+@import '../../assets/styles/variables.scss';
+@import '../../assets/styles/_mixins.scss';
+
+.background {
+	text-align: center;
+
+	min-height: 100vh;
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+	display: grid;
+	place-items: center;
+	backdrop-filter: blur(5px);
+
+	.form {
+		width: 60%;
+		background-color: $lightText;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		border-radius: 10px;
+		box-shadow: 0 0 25px;
+		overflow: hidden;
+		align-items: center;
+
+
+		@include mobile {
+			width: 95%;
+			grid-template-columns: 1fr;
+			min-height: 60vh;
+		}
+
+		.left {
+			border-right: 1px solid gray;
+			height: 100%;
+			padding: 20px;
+
+			@include mobile {
+				display: none;
+			}
+
+			img {
+				height: 100%;
+				width: 100%;
+			}
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			padding: 20px;
+			background-color: $background;
+
+			height: 100%;
+
+			.logo {
+				justify-content: center;
+				align-items: center;
+				color: $primaryColor;
+				margin: 20px 0;
+
+				img {
+					width: 120px;
+					height: auto;
+				}
+
+				p {
+					color: inherit;
+					font-size: 1.5rem;
+					font-weight: bolder;
+				}
+			}
+
+			button {
+				border-radius: 5px;
+				padding: 15px 10px;
+				width: 50%;
+				background-color: $primaryColor;
+				color: $text;
+				font-weight: bold;
+			}
+
+			p {
+				margin: 10px 0;
+				font-size: 0.8rem;
+				color: $text;
+
+				a {
+					color: $text;
+				}
+			}
+		}
+	}
+}

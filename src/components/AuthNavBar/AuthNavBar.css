@@ -1,0 +1,225 @@
+.auth-nav-bar {
+  background-color: rgba(36, 37, 38, 0.3);
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
+  -webkit-filter: blur(0.3);
+          filter: blur(0.3);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  padding: 0px 4%;
+  width: 100%;
+  z-index: 150;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 10vh;
+}
+
+.auth-nav-bar .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.auth-nav-bar .logo img {
+  width: 35px;
+  height: auto;
+}
+
+.auth-nav-bar .logo h1 {
+  font-size: 1.3rem;
+  margin: 0 10px;
+  color: #1a80ed;
+}
+
+.auth-nav-bar .end-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.auth-nav-bar .end-links svg {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border: 2px solid #ff8308;
+  border-radius: 50%;
+}
+
+.auth-nav-bar .end-links .wallet-icon {
+  text-align: center;
+  font-size: 12px;
+  padding: 0 1.5rem;
+}
+
+.auth-nav-bar .end-links .wallet-icon svg {
+  border: hidden;
+  border-radius: 0;
+  width: 30px;
+  height: 30px;
+}
+
+.auth-nav-bar .end-links .flag {
+  position: relative;
+  display: block;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.auth-nav-bar .end-links .flag svg {
+  border: hidden;
+  border-radius: 0;
+  width: 35px;
+  height: 35px;
+}
+
+.auth-nav-bar .end-links .flag .badge {
+  position: absolute;
+  top: -5px;
+  right: 5px;
+  padding: 1px 4px;
+  border-radius: 50%;
+  background-color: #ff0202;
+  color: white;
+  font-size: 14px;
+}
+
+.auth-nav-bar .end-links .flag .double {
+  right: 0;
+}
+
+.dialog-div .flags-div {
+  padding: 5px;
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 5px;
+  word-break: break-all;
+}
+
+.dialog-div .flags-div p {
+  font-size: 0.85rem;
+  color: white;
+  font-weight: 500;
+}
+
+.dialog-div .flags-div .green {
+  color: #107210;
+}
+
+.dialog-div .flags-div .red {
+  color: #f74f4f;
+}
+
+.dialog-div .red-back {
+  background-color: #ee0c0c;
+}
+
+.dialog-div .brown-back {
+  background-color: #27682e;
+}
+
+@media (max-width: 576px) {
+  .dialog-div {
+    display: block;
+  }
+}
+
+.profile-not-completed {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 20px;
+  background-color: #f72a2a;
+  color: white;
+  text-align: center;
+}
+
+.profile-not-completed p,
+.profile-not-completed b,
+.profile-not-completed a {
+  color: white;
+}
+
+.profile-not-completed svg {
+  fill: white;
+}
+
+.dashboard-nav-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(250, 207, 87, 0.3);
+}
+
+.dashboard-nav-bar .link {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #ff8308;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  font-family: 'Noto Sans';
+}
+
+.dashboard-nav-bar .link:hover,
+.dashboard-nav-bar .link .active {
+  background-color: #ff8308 !important;
+  color: #1a80ed;
+}
+
+.dashboard-nav-bar .active {
+  background-color: #ff8308;
+  color: #1a80ed;
+}
+
+@media (max-width: 576px) {
+  .dashboard-nav-bar {
+    background-color: #facf57;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  .dashboard-nav-bar .link {
+    padding: 5px;
+  }
+  .dashboard-nav-bar .active svg {
+    fill: white;
+  }
+  .dashboard-nav-bar .active .name {
+    color: white;
+  }
+  .dashboard-nav-bar .name {
+    font-size: 9px;
+  }
+}
+/*# sourceMappingURL=AuthNavBar.css.map */

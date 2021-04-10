@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,300;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
+* {
+  color: #E4E6EB;
+  scroll-behavior: smooth;
+  font-family: 'Noto Sans', sans-serif !important;
+  /* Handle */
+  /* Handle on hover */
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #242526;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #1a80ed;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
+}
+
+a {
+  color: blue;
+}
+
+p {
+  font-size: 0.9rem;
+}
+
+select {
+  background-color: transparent;
+  padding: 5px;
+  margin: 0;
+  border-radius: 5px;
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.8rem;
+  cursor: inherit;
+  line-height: inherit;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.root-bg {
+  background-color: #18191A;
+  min-height: 100vh;
+}
+
+.primary-btn {
+  background-color: #1a80ed;
+  text-decoration: none;
+  border-radius: 5px;
+  color: white;
+  display: block;
+  text-align: center;
+}
+
+.red-btn {
+  background-color: red !important;
+  text-decoration: none;
+  border-radius: 5px;
+  color: white;
+  display: block;
+  text-align: center;
+}
+
+.secondary-btn {
+  background-color: #ff8308;
+  text-decoration: none;
+  color: white;
+  display: block;
+  text-align: center;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.secondary-btn:hover {
+  color: white;
+  background-color: #1a80ed;
+}
+
+.error {
+  color: red !important;
+  font-size: 0.8rem;
+}
+
+.heading {
+  margin: 5px 0;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background-color: rgba(26, 128, 237, 0.8);
+  padding: 15px;
+  border-radius: 50px;
+  color: white;
+  text-align: center;
+  font-family: 'Noto Sans';
+  font-size: 1.1rem;
+}
+
+.Toastify__toast-body {
+  color: white !important;
+}
+
+.ql-tooltip {
+  z-index: 5;
+}
+
+.quill {
+  background-color: white;
+  height: 100%;
+  margin: 10px 0;
+}
+
+.quill .ql-toolbar {
+  background-color: #e8e8e8;
+}
+
+.card {
+  background-color: #242526;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+}
+/*# sourceMappingURL=App.css.map */

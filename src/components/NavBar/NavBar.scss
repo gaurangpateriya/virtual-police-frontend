@@ -1,0 +1,83 @@
+@import '../../assets/styles/variables.scss';
+@import '../../assets/styles/_mixins.scss';
+
+.nav-bar {
+	background-color: $lighBackground;
+	// backdrop-filter: blur(15px);
+	position: sticky;
+	top: 0px;
+	padding: 0px 2%;
+	width: 100%;
+	z-index: 150;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: $navHeight;
+
+	.logo {
+		display: flex;
+		align-items: center;
+
+		img {
+			width: 25px;
+			height: auto;
+		}
+
+		h1 {
+			font-size: 1.3rem;
+			margin: 0 10px;
+			color: $primaryColor;
+		}
+	}
+
+	.end-links {
+		display: flex;
+		align-items: center;
+
+		a {
+			margin: 0 15px;
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		button {
+			background-color: rgb(38, 35, 46);
+			color: $primaryColor;
+			padding: 10px 20px;
+			border-radius: 5px;
+			text-decoration: none;
+
+			a {
+				color: white;
+				text-decoration: none;
+			}
+		}
+
+		.menu-icon {
+			background-color: transparent;
+		}
+	}
+}
+
+.side-drawer-links {
+	list-style: none;
+	padding: 0;
+
+	li {
+		border-bottom: 1px solid;
+		padding: 10px;
+
+		a {
+			text-decoration: none;
+		}
+	}
+}
+
+.hide-sm {
+	@include mobile {
+		display: none;
+	}
+}

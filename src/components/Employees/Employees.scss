@@ -1,0 +1,96 @@
+@import '../../assets/styles/variables.scss';
+@import '../../assets/styles/_mixins.scss';
+
+$paddingHorizontal : 20px;
+
+.employees-div {
+	padding: 0 $paddingHorizontal;
+
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+
+
+		h3 {
+			font-weight: 500;
+		}
+	}
+
+	.employees-table {
+		width: 100%;
+		margin-top: 10px;
+		background: $lighBackground;
+
+		border-collapse: collapse;
+
+		thead {
+			background-color: rgba($secondaryColor, 0.6);
+		}
+
+		thead,
+		td,
+		th {
+			text-align: left;
+
+			padding: 8px;
+			font-size: 0.8rem;
+
+			border-spacing: 0px !important;
+		}
+
+		tr:nth-child(even) {
+			background-color: rgba($primaryColor, 0.2);
+		}
+	}
+
+
+}
+
+.create-employee {
+	background-color: $background;
+	padding: 20px;
+
+	.header {
+		font-size: 1rem;
+	}
+
+	.employee-form {
+		padding: 10px 0;
+
+		.input-field {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			p {
+				margin-right: 10px;
+				font-size: 0.8rem;
+			}
+
+			input,
+			select {
+				font-size: 0.8rem;
+				background-color: transparent;
+				border: none;
+				border-bottom: 1px solid $lightText;
+				padding: 5px;
+			}
+
+			option {
+				color: black;
+				background-color: transparent;
+			}
+		}
+
+
+	}
+
+	.actions {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+	}
+
+}

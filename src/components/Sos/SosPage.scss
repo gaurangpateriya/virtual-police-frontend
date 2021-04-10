@@ -1,0 +1,39 @@
+@import '../../assets/styles/variables.scss';
+@import '../../assets/styles/_mixins.scss';
+
+$paddingHorizontal : 20px;
+
+.sos-page-div {
+	padding: 0 $paddingHorizontal;
+
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		h3 {
+			font-weight: 500;
+		}
+	}
+
+	.sos-div {
+		padding-bottom: 10px;
+
+		.sos {
+			width: 95%;
+			margin: 15px auto;
+			background-color: $lighBackground;
+			padding: 10px;
+			border-radius: 10px;
+
+			p {
+				font-size: 0.9rem;
+			}
+
+			.header {
+				border-bottom: 1px solid $lightText;
+			}
+		}
+	}
+
+}

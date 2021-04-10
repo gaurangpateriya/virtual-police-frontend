@@ -1,0 +1,40 @@
+.sos-page-div {
+  padding: 0 20px;
+}
+
+.sos-page-div .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sos-page-div .header h3 {
+  font-weight: 500;
+}
+
+.sos-page-div .sos-div {
+  padding-bottom: 10px;
+}
+
+.sos-page-div .sos-div .sos {
+  width: 95%;
+  margin: 15px auto;
+  background-color: #242526;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.sos-page-div .sos-div .sos p {
+  font-size: 0.9rem;
+}
+
+.sos-page-div .sos-div .sos .header {
+  border-bottom: 1px solid #a5a6a8;
+}
+/*# sourceMappingURL=SosPage.css.map */

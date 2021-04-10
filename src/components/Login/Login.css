@@ -1,0 +1,110 @@
+.background {
+  text-align: center;
+  min-height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+
+.background .form {
+  width: 60%;
+  background-color: #a5a6a8;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 0 25px;
+          box-shadow: 0 0 25px;
+  overflow: hidden;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 576px) {
+  .background .form {
+    width: 95%;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    min-height: 60vh;
+  }
+}
+
+.background .form .left {
+  border-right: 1px solid gray;
+  height: 100%;
+  padding: 20px;
+}
+
+@media (max-width: 576px) {
+  .background .form .left {
+    display: none;
+  }
+}
+
+.background .form .left img {
+  height: 100%;
+  width: 100%;
+}
+
+.background .form form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  background-color: #18191A;
+  height: 100%;
+}
+
+.background .form form .logo {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #1a80ed;
+  margin: 20px 0;
+}
+
+.background .form form .logo img {
+  width: 120px;
+  height: auto;
+}
+
+.background .form form .logo p {
+  color: inherit;
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+
+.background .form form button {
+  border-radius: 5px;
+  padding: 15px 10px;
+  width: 50%;
+  background-color: #1a80ed;
+  color: #E4E6EB;
+  font-weight: bold;
+}
+
+.background .form form p {
+  margin: 10px 0;
+  font-size: 0.8rem;
+  color: #E4E6EB;
+}
+
+.background .form form p a {
+  color: #E4E6EB;
+}
+/*# sourceMappingURL=Login.css.map */

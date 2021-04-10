@@ -1,0 +1,95 @@
+.nav-bar {
+  background-color: #242526;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  padding: 0px 2%;
+  width: 100%;
+  z-index: 150;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 10vh;
+}
+
+.nav-bar .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.nav-bar .logo img {
+  width: 25px;
+  height: auto;
+}
+
+.nav-bar .logo h1 {
+  font-size: 1.3rem;
+  margin: 0 10px;
+  color: #1a80ed;
+}
+
+.nav-bar .end-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.nav-bar .end-links a {
+  margin: 0 15px;
+  text-decoration: none;
+}
+
+.nav-bar .end-links a:hover {
+  text-decoration: underline;
+}
+
+.nav-bar .end-links button {
+  background-color: #26232e;
+  color: #1a80ed;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.nav-bar .end-links button a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-bar .end-links .menu-icon {
+  background-color: transparent;
+}
+
+.side-drawer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.side-drawer-links li {
+  border-bottom: 1px solid;
+  padding: 10px;
+}
+
+.side-drawer-links li a {
+  text-decoration: none;
+}
+
+@media (max-width: 576px) {
+  .hide-sm {
+    display: none;
+  }
+}
+/*# sourceMappingURL=NavBar.css.map */

@@ -1,0 +1,207 @@
+@import '../../assets/styles/variables.scss';
+@import '../../assets/styles/_mixins.scss';
+
+.auth-nav-bar {
+	background-color: rgba($lighBackground, 0.3);
+	backdrop-filter: blur(15px);
+
+	filter: blur(0.3);
+	position: sticky;
+	top: 0px;
+	padding: 0px 4%;
+	width: 100%;
+	z-index: 150;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: $navHeight;
+
+	.logo {
+		display: flex;
+		align-items: center;
+
+
+		img {
+			width: 35px;
+			height: auto;
+		}
+
+		h1 {
+			font-size: 1.3rem;
+			margin: 0 10px;
+			color: $primaryColor;
+		}
+	}
+
+	.end-links {
+		display: flex;
+		align-items: center;
+
+
+		svg {
+			width: 40px;
+			height: 40px;
+
+			cursor: pointer;
+			border: 2px solid $secondaryColor;
+			border-radius: 50%;
+		}
+
+		.wallet-icon {
+			text-align: center;
+			font-size: 12px;
+			padding: 0 1.5rem;
+
+			svg {
+				border: hidden;
+				border-radius: 0;
+				width: 30px;
+				height: 30px;
+			}
+		}
+
+		.flag {
+			position: relative;
+			display: block;
+			justify-content: center;
+
+			svg {
+				border: hidden;
+				border-radius: 0;
+				width: 35px;
+				height: 35px;
+			}
+
+			.badge {
+				position: absolute;
+				top: -5px;
+				right: 5px;
+				padding: 1px 4px;
+				border-radius: 50%;
+				background-color: rgb(255, 2, 2);
+				color: white;
+				font-size: 14px;
+			}
+
+			.double {
+				right: 0;
+			}
+		}
+	}
+}
+
+.dialog-div {
+
+	// display:grid;
+	// grid-template-columns:2fr 2fr ;
+	// grid-column-gap: 10px;
+	.flags-div {
+		//background-color: $primaryColor;
+		padding: 5px;
+		border-radius: 5px;
+		width: 100%;
+		margin-top: 5px;
+		word-break: break-all;
+
+		p {
+			font-size: 0.85rem;
+			color: white;
+			font-weight: 500;
+		}
+
+		.green {
+			color: rgb(16, 114, 16);
+		}
+
+		.red {
+			color: rgb(247, 79, 79);
+		}
+	}
+
+	.red-back {
+		background-color: rgb(238, 12, 12);
+	}
+
+	.brown-back {
+		background-color: rgb(39, 104, 46);
+	}
+
+	@include mobile {
+		display: block;
+	}
+}
+
+.profile-not-completed {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+	background-color: rgb(247, 42, 42);
+	color: white;
+	text-align: center;
+
+	p,
+	b,
+	a {
+		color: white;
+	}
+
+	svg {
+		fill: white;
+	}
+}
+
+//DashboardNavBar.js
+.dashboard-nav-bar {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	background-color: rgba(#facf57, 0.3);
+
+	.link {
+		flex-grow: 1;
+		padding: 20px;
+		cursor: pointer;
+		text-decoration: none;
+		color: $secondaryColor;
+		transition: all 0.3s;
+		text-align: center;
+		font-family: 'Noto Sans';
+
+		&:hover,
+		.active {
+			background-color: $secondaryColor !important;
+			color: $primaryColor;
+		}
+	}
+
+	.active {
+		background-color: $secondaryColor;
+		color: $primaryColor;
+	}
+
+	@include mobile {
+		background-color: #facf57;
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+
+		.link {
+			padding: 5px;
+		}
+
+		.active {
+			svg {
+				fill: white;
+			}
+
+			.name {
+				color: white;
+			}
+		}
+
+		.name {
+			font-size: 9px;
+		}
+	}
+}

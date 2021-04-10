@@ -1,0 +1,100 @@
+.employees-div {
+  padding: 0 20px;
+}
+
+.employees-div .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.employees-div .header h3 {
+  font-weight: 500;
+}
+
+.employees-div .employees-table {
+  width: 100%;
+  margin-top: 10px;
+  background: #242526;
+  border-collapse: collapse;
+}
+
+.employees-div .employees-table thead {
+  background-color: rgba(255, 131, 8, 0.6);
+}
+
+.employees-div .employees-table thead,
+.employees-div .employees-table td,
+.employees-div .employees-table th {
+  text-align: left;
+  padding: 8px;
+  font-size: 0.8rem;
+  border-spacing: 0px !important;
+}
+
+.employees-div .employees-table tr:nth-child(even) {
+  background-color: rgba(26, 128, 237, 0.2);
+}
+
+.create-employee {
+  background-color: #18191A;
+  padding: 20px;
+}
+
+.create-employee .header {
+  font-size: 1rem;
+}
+
+.create-employee .employee-form {
+  padding: 10px 0;
+}
+
+.create-employee .employee-form .input-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.create-employee .employee-form .input-field p {
+  margin-right: 10px;
+  font-size: 0.8rem;
+}
+
+.create-employee .employee-form .input-field input,
+.create-employee .employee-form .input-field select {
+  font-size: 0.8rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #a5a6a8;
+  padding: 5px;
+}
+
+.create-employee .employee-form .input-field option {
+  color: black;
+  background-color: transparent;
+}
+
+.create-employee .actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+/*# sourceMappingURL=Employees.css.map */

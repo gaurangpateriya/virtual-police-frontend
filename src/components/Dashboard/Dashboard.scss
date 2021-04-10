@@ -1,0 +1,78 @@
+@import '../../assets/styles/variables.scss';
+@import '../../assets/styles/_mixins.scss';
+
+$paddingHorizontal : 20px;
+
+.dashboard-div {
+	padding: $paddingHorizontal;
+
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	grid-column-gap: 30px;
+
+
+	.emp-overView {
+
+		align-items: center;
+
+		.content {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-column-gap: 10px;
+			grid-row-gap: 10px;
+
+			div {
+				text-align: center;
+				background: $background;
+				padding: 10px;
+				border-radius: 10px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+
+				b {
+					font-size: 1rem;
+					font-weight: 300;
+
+				}
+
+				p {
+					font-size: 1.5rem;
+					color: $primaryColor;
+				}
+			}
+		}
+	}
+
+	.fir-overView {
+		.content {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+			grid-column-gap: 10px;
+			grid-row-gap: 10px;
+
+			div {
+				text-align: center;
+				background: $background;
+				padding: 10px;
+				border-radius: 10px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+
+				b {
+					font-size: 1rem;
+					font-weight: 300;
+
+				}
+
+				p {
+					font-size: 1.5rem;
+					color: $primaryColor;
+				}
+			}
+		}
+	}
+
+
+}
