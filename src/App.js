@@ -22,6 +22,8 @@ import ForgotPassword from './components/Login/ForgotPassword';
 import ResetPassword from './components/Login/ResetPassword';
 import FirPage from './components/Fir/FirPage';
 import FirDetails from './components/Fir/FirDetails';
+import NocPage from './components/Nocs/NocPage';
+import NocDetails from './components/Nocs/NocDetails';
 import SosPage from './components/Sos/SosPage';
 
 const isLogin = () => {
@@ -97,11 +99,21 @@ const App = ({ history }) => {
               exact
             />
             <PrivateRoute
+              path='/nocs'
+              component={NocPage}
+              exact
+            />
+            <PrivateRoute
               path='/sos-requests'
               component={SosPage}
               exact
             />
 
+            <PrivateRoute
+              path='/noc/:id'
+              component={NocDetails}
+              exact
+            />
             <PrivateRoute
               path='/firDetails/:id'
               component={FirDetails}

@@ -11,16 +11,17 @@ import { shiftStyles } from '../../common/commonUseStyles';
 
 import { GET_FIRS, GET_EMPLOYEES } from '../../constants/actionTypes'
 import moment from 'moment';
-import { firStatus } from '../../constants/otherConstants';
+import { firStatus, THEFT_TYPE } from '../../constants/otherConstants';
 // import { Link } from 'react-router-dom';
 
+const { VEHICLE_THEFT, MOBILE_THEFT } = THEFT_TYPE;
 const FirDetails = ({ match: { params: { id } } }) => {
   const classes = shiftStyles();
 
   const allfirs = useSelector(state => state.FirReducers.firs)
   const employees = useSelector(state => state.EmployeeReducers.employees)
 
-  const [fir, setFir] = useState({ User: {}, Employee: {} });
+  const [fir, setFir] = useState({ User: {}, Employee: {}, FirImages: [] });
 
   const drawerOpen = useSelector(state => state.common.drawerOpen)
   const [loading, setLoading] = useState(false);
@@ -71,15 +72,10 @@ const FirDetails = ({ match: { params: { id } } }) => {
     if (!emp) {
       return
     }
-
-
-
     const data = { id: fir.id, EmployeeId: emp, status: firStatus.ACTIVE }
-
-
     setLoading(true);
-    const res = await agent.Firs.updateFir(data);
 
+    const res = await agent.Firs.updateFir(data);
     setLoading(false);
 
     const updatedFir = { ...fir, EmployeeId: emp, Employee: employees.find(e => e.id === emp), status: firStatus.ACTIVE }
@@ -112,7 +108,49 @@ const FirDetails = ({ match: { params: { id } } }) => {
               <p>{fir.User.mobileNo} </p>
               <p>Aadhar card No: {fir.User.aadharNumber} </p>
               <p>Address: {fir.User.address} </p>
+            </div>
+            {
+              fir.crimeNature === VEHICLE_THEFT && (
+                <div className='card' >
+                  <h4 >Stolen Vehicle Details</h4>
+                  <p> Type:     {fir.vehicleType}</p>
+                  <p > Model:     {fir.vehicleModel}</p>
+                  <p > Registration Number:     {fir.registrationNumber}</p>
+                </div>
+              )
 
+            }
+            {
+              fir.crimeNature === MOBILE_THEFT && (
+                <div className='card'>
+                  <h4 >Stolen Mobile Details</h4>
+                  <p > Mobile Number:    {fir.stolenMobileNumber || 'Not added'}</p>
+                  <p > Model:    {fir.stolenMobileModel || 'Not added'}</p>
+                  <p > IMEI Number:    {fir.stolenMobileIMEINumber || 'Not added'}</p>
+                </div>
+              )
+            }
+            <div className="card">
+              <h4>Images:</h4>
+              <div className='fir-images' >
+                {
+                  fir.FirImages.length == 0 ? (
+                    <p>No Images present</p>
+                  ) : fir.FirImages.map(img => (
+
+                    <a target="_blank" href={img.image} >
+                      <p className='tc'>{img.name}</p>
+                      <img src={img.image} />
+                      <div>
+                        <p>
+                          Click to Enlarge
+                        </p>
+                      </div>
+                    </a>
+
+                  ))
+                }
+              </div>
             </div>
             <div className="card">
               <h4>Offence Details:</h4>
@@ -128,6 +166,7 @@ const FirDetails = ({ match: { params: { id } } }) => {
               <b>Witness Details: </b>
               <p>{fir.witnessDetails || 'Not added'} </p>
             </div>
+
           </div>
           <div className="actions card">
             <p className='bb pb2'>Status: {fir.status}</p>
@@ -160,7 +199,7 @@ const FirDetails = ({ match: { params: { id } } }) => {
           }
         </div>
 
-      </div>
+      </div >
     </>
   );
 };

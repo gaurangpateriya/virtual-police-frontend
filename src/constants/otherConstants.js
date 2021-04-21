@@ -56,3 +56,15 @@ export const firStatus = {
   INVESTIGATION_COMPLETED: 'Investigation Complete'
 }
 
+export const nocStatus = {
+  SUBMITTED: 'Submitted',
+  VERIFIED: 'Verified',
+  REJECTED: 'Rejected',
+}
+
+
+export const THEFT_TYPE = {
+  VEHICLE_THEFT: 'Vehicle Theft',
+  MOBILE_THEFT: 'Mobile Theft',
+
+}

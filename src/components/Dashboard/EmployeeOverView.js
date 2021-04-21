@@ -51,13 +51,13 @@ export default () => {
       <div className='card content ' >
         {
           Object.keys(empOverView).map(o => (
-            <div key={o.id} className='pointer' onClick={() => history.push(`/employees?role=${o}`)} >
+            <div key={o.id} className='pointer div' onClick={() => history.push(`/employees?role=${o}`)} >
               <b>{o} </b>
               <p>{empOverView[o]} </p>
             </div>
           ))
         }
-        <div className='' >
+        <div className='div' >
           <b>Total </b>
           <p>{total} </p>
         </div>

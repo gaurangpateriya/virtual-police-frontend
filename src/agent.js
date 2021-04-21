@@ -56,6 +56,7 @@ const Dashboard = {
   getSosOverView: () => requests.get('/admin/sos/overview'),
   getFirOverView: () => requests.get('/admin/fir/overview'),
   getEmpOverView: () => requests.get('/admin/employee/overview'),
+  getNocOverView: () => requests.get('/admin/noc/overview'),
 
 };
 
@@ -77,10 +78,19 @@ const Firs = {
   updateFir: (fir) => requests.post('/admin/fir/update', fir)
 }
 
+const Nocs = {
+  getNocs: () => requests.get('/admin/noc/get'),
+  getFilteredNocs: (search) => requests.get(`/admin/noc/get${search}`),
+  getNocDetails: (id) => requests.get(`/admin/noc/get?id=${id}`),
+  updateNoc: (noc) => requests.post('/admin/noc/update', noc),
+  verifyNoc: (noc) => requests.postFile('/admin/noc/verify', noc)
+}
+
 const SosPage = {
   getSos: () => requests.get('/admin/sos/get'),
   getsosDetails: (id) => requests.get(`/admin/sos/get?id=${id}`),
-  updatesos: (sos) => requests.post('/admin/sos/update', sos)
+  updatesos: (sos) => requests.post('/admin/sos/update', sos),
+
 }
 
 
@@ -93,6 +103,7 @@ export default {
   Dashboard,
   SosPage,
   UserDetails,
-  Firs
+  Firs,
+  Nocs
 
 };

@@ -10,6 +10,7 @@ import FirOverView from './FirOverView';
 
 import { shiftStyles } from '../../common/commonUseStyles';
 import EmployeeOverView from './EmployeeOverView';
+import NocOverView from './NocOverView';
 // import { Link } from 'react-router-dom';
 
 
@@ -39,6 +40,7 @@ const Dashboard = (props) => {
           </div>
           <div className='right'>
             <EmployeeOverView />
+            <NocOverView />
           </div>
 
         </div>

@@ -7,6 +7,33 @@
   grid-column-gap: 30px;
 }
 
+.dashboard-div .div {
+  text-align: center;
+  background: #18191A;
+  padding: 10px;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.dashboard-div .div b {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.dashboard-div .div p {
+  font-size: 1.5rem;
+  color: #1a80ed;
+}
+
 .dashboard-div .emp-overView {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -22,33 +49,6 @@
   grid-row-gap: 10px;
 }
 
-.dashboard-div .emp-overView .content div {
-  text-align: center;
-  background: #18191A;
-  padding: 10px;
-  border-radius: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.dashboard-div .emp-overView .content div b {
-  font-size: 1rem;
-  font-weight: 300;
-}
-
-.dashboard-div .emp-overView .content div p {
-  font-size: 1.5rem;
-  color: #1a80ed;
-}
-
 .dashboard-div .fir-overView .content {
   display: -ms-grid;
   display: grid;
@@ -56,32 +56,5 @@
       grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 10px;
   grid-row-gap: 10px;
-}
-
-.dashboard-div .fir-overView .content div {
-  text-align: center;
-  background: #18191A;
-  padding: 10px;
-  border-radius: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.dashboard-div .fir-overView .content div b {
-  font-size: 1rem;
-  font-weight: 300;
-}
-
-.dashboard-div .fir-overView .content div p {
-  font-size: 1.5rem;
-  color: #1a80ed;
 }
 /*# sourceMappingURL=Dashboard.css.map */

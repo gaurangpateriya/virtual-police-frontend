@@ -3,7 +3,7 @@
 
 $paddingHorizontal : 20px;
 
-.fir-page-div {
+.noc-page-div {
 	padding: 0 $paddingHorizontal;
 
 	.header {
@@ -18,10 +18,10 @@ $paddingHorizontal : 20px;
 		}
 	}
 
-	.firs-div {
+	.nocs-div {
 		padding-bottom: 10px;
 
-		.fir {
+		.noc {
 			width: 95%;
 			margin: 15px auto;
 			background-color: $lighBackground;
@@ -41,7 +41,7 @@ $paddingHorizontal : 20px;
 
 }
 
-.fir-page-details-div {
+.noc-page-details-div {
 	padding: 0 $paddingHorizontal;
 	display: flex;
 	justify-content: space-between;
@@ -67,56 +67,38 @@ $paddingHorizontal : 20px;
 		top: 20px;
 	}
 
-	.fir-images {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
+	.doc-btn {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 
 		a {
+			cursor: pointer;
+			background-color: $secondaryColor;
 			color: $text;
-			text-align: center;
-			width: 100%;
-			height: 350px;
-
-			display: block;
+			padding: 5px;
+			border-radius: 2px;
+			text-decoration: none;
 			font-size: 0.85rem;
-			margin: auto;
-			position: relative;
-			overflow: hidden;
-
-			img {
-				width: auto;
-				height: 100%;
-			}
-
-			&:hover {
-
-				div {
-					top: 0;
-				}
-			}
-
-			div {
-				position: absolute;
-				width: 100%;
-				transition: 0.3s ease-out;
-				height: 100%;
-				top: -100%;
-				left: 0;
-				display: grid;
-				place-items: center;
-				background-color: rgba(black, 0.1);
-
-				backdrop-filter: blur(10px);
-
-				p {
-					color: black;
-					font-weight: 900;
-					font-size: 1.5rem;
-					text-decoration: underline;
-				}
-
-			}
-
 		}
 	}
+
+	.verify-btn {
+		position: relative;
+		padding: 10px;
+		margin-top: 10px;
+
+		input {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			cursor: pointer;
+			top: 0;
+			left: 0;
+			opacity: 0;
+		}
+
+	}
+
+
 }

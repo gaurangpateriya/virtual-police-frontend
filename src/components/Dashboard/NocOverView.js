@@ -4,12 +4,12 @@ import './Dashboard.css';
 import agent from '../../agent';
 import moment from 'moment';
 import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
-import { colors, firStatus } from '../../constants/otherConstants'
+import { colors, nocStatus } from '../../constants/otherConstants'
 import { useHistory } from 'react-router';
 
 export default () => {
 
-  const [firOverView, setFirOverView] = useState([]);
+  const [nocOverView, setNocOverView] = useState([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
 
@@ -18,7 +18,7 @@ export default () => {
   useEffect(() => {
     (async () => {
       setLoading(true)
-      const res = await agent.Dashboard.getFirOverView();
+      const res = await agent.Dashboard.getNocOverView();
       const data = res.data.data
       const temp = {}
       let total = 0
@@ -26,26 +26,26 @@ export default () => {
         temp[d.status] = d.count
       })
 
-      Object.keys(firStatus).forEach(k => {
-        k = firStatus[k]
+      Object.keys(nocStatus).forEach(k => {
+        k = nocStatus[k]
         temp[k] = temp[k] ? temp[k] : 0
         total += Number(temp[k])
       })
       setTotal(total)
-      setFirOverView(temp);
+      setNocOverView(temp);
       setLoading(false)
     })()
   }, [])
 
   return (
-    <div className=" relative fir-overView">
-      <h3 className='tc '>FIR Overview</h3>
+    <div className=" relative emp-overView">
+      <h3 className='tc '>NOC Applications Overview</h3>
       <div className='card content ' >
         {
-          Object.keys(firOverView).map(o => (
-            <div key={o.id} className='pointer div' onClick={() => history.push(`/firs?status=${o}`)} >
+          Object.keys(nocOverView).map(o => (
+            <div key={o.id} className='pointer div' onClick={() => history.push(`/nocs?status=${o}`)} >
               <b>{o} </b>
-              <p>{firOverView[o]} </p>
+              <p>{nocOverView[o]} </p>
             </div>
           ))
         }

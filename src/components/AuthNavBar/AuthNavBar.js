@@ -16,6 +16,7 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import MenuIcon from '@material-ui/icons/Menu';
+import DescriptionIcon from '@material-ui/icons/Description';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
@@ -25,8 +26,9 @@ import ThumbsUpDownIcon from '@material-ui/icons/ThumbsUpDown';
 
 import NotesIcon from '@material-ui/icons/Notes';
 import { push } from 'react-router-redux';
+import { useLocation } from 'react-router';
 
-
+const { background, primaryColor, lighBackground } = colors.dark
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -60,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerOpen: {
     width: drawerWidth,
-    backgroundColor: colors.dark.lighBackground,
+    backgroundColor: lighBackground,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
@@ -73,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     overflowX: 'hidden',
-    backgroundColor: colors.dark.lighBackground,
+    backgroundColor: lighBackground,
     width: theme.spacing(7) + 1,
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing(9) + 1,
@@ -98,16 +100,17 @@ const useStyles = makeStyles((theme) => ({
 function AuthNavBar() {
   const classes = useStyles();
   const theme = useTheme();
-
+  const { pathname } = useLocation();
   const drawerOpen = useSelector(state => state.common.drawerOpen)
   const dispatch = useDispatch()
 
   const links = [
-    { text: 'Dashboard', icon: <DashboardIcon style={{ fill: colors.dark.primaryColor }} />, onClick: () => dispatch(push('/dashboard')) },
-    { text: 'SOS', icon: <ThumbsUpDownIcon style={{ fill: colors.dark.primaryColor }} />, onClick: () => dispatch(push('/sos-requests')) },
-    { text: 'Employees', icon: <GroupSharpIcon style={{ fill: colors.dark.primaryColor }} />, onClick: () => dispatch(push('/employees')) },
-    { text: 'FIRs', icon: <NotesIcon style={{ fill: colors.dark.primaryColor }} />, onClick: () => dispatch(push('/firs')) },
-    { text: 'Logout', icon: <ExitToAppSharpIcon style={{ fill: colors.dark.primaryColor }} />, onClick: () => dispatch({ type: LOGOUT }) },
+    { text: 'Dashboard', icon: <DashboardIcon style={{ fill: pathname === '/dashboard' ? background : primaryColor }} />, onClick: () => dispatch(push('/dashboard')), link: '/dashboard' },
+    { text: 'SOS', icon: <ThumbsUpDownIcon style={{ fill: pathname === '/sos-requests' ? background : primaryColor }} />, onClick: () => dispatch(push('/sos-requests')), link: '/sos-requests' },
+    { text: 'Employees', icon: <GroupSharpIcon style={{ fill: pathname === '/employees' ? background : primaryColor }} />, onClick: () => dispatch(push('/employees')), link: '/employees' },
+    { text: 'FIRs', icon: <NotesIcon style={{ fill: pathname === '/firs' ? background : primaryColor }} />, onClick: () => dispatch(push('/firs')), link: '/firs' },
+    { text: 'NOC Applications', icon: <DescriptionIcon style={{ fill: pathname === '/nocs' ? background : primaryColor }} />, onClick: () => dispatch(push('/nocs')), link: '/nocs' },
+    { text: 'Logout', icon: <ExitToAppSharpIcon style={{ fill: pathname === '' ? background : primaryColor }} />, onClick: () => dispatch({ type: LOGOUT }) },
 
   ]
 
@@ -162,8 +165,8 @@ function AuthNavBar() {
         <Divider />
         <List>
           {links.map((l) => (
-            <ListItem button key={l.text} onClick={l.onClick}>
-              <ListItemIcon>{l.icon}</ListItemIcon>
+            <ListItem button key={l.text} onClick={l.onClick} style={{ backgroundColor: pathname === l.link ? primaryColor : "" }} >
+              <ListItemIcon  >{l.icon}</ListItemIcon>
               <ListItemText primary={l.text} />
             </ListItem>
           ))}

@@ -56,7 +56,7 @@
   place-items: center;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.3);
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;

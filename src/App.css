@@ -60,6 +60,11 @@ select {
   line-height: inherit;
 }
 
+textarea {
+  background-color: transparent;
+  padding: 10px;
+}
+
 select::-ms-expand {
   display: none;
 }

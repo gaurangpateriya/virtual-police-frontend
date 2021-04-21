@@ -1,0 +1,118 @@
+.noc-page-div {
+  padding: 0 20px;
+}
+
+.noc-page-div .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.noc-page-div .header h3 {
+  font-weight: 500;
+}
+
+.noc-page-div .nocs-div {
+  padding-bottom: 10px;
+}
+
+.noc-page-div .nocs-div .noc {
+  width: 95%;
+  margin: 15px auto;
+  background-color: #242526;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.noc-page-div .nocs-div .noc p {
+  font-size: 0.9rem;
+}
+
+.noc-page-div .nocs-div .noc .header {
+  border-bottom: 1px solid #a5a6a8;
+}
+
+.noc-page-details-div {
+  padding: 0 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.noc-page-details-div .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.noc-page-details-div .header h3 {
+  font-weight: 500;
+}
+
+.noc-page-details-div .content {
+  width: 70%;
+}
+
+.noc-page-details-div .actions {
+  width: 25%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 20px;
+}
+
+.noc-page-details-div .doc-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.noc-page-details-div .doc-btn a {
+  cursor: pointer;
+  background-color: #ff8308;
+  color: #E4E6EB;
+  padding: 5px;
+  border-radius: 2px;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.noc-page-details-div .verify-btn {
+  position: relative;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.noc-page-details-div .verify-btn input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+/*# sourceMappingURL=NocPage.css.map */

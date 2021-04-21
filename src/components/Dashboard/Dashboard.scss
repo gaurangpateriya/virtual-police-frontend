@@ -3,6 +3,7 @@
 
 $paddingHorizontal : 20px;
 
+
 .dashboard-div {
 	padding: $paddingHorizontal;
 
@@ -10,9 +11,29 @@ $paddingHorizontal : 20px;
 	grid-template-columns: 2fr 1fr;
 	grid-column-gap: 30px;
 
+	.div {
+
+		text-align: center;
+		background: $background;
+		padding: 10px;
+		border-radius: 10px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		b {
+			font-size: 1rem;
+			font-weight: 300;
+		}
+
+		p {
+			font-size: 1.5rem;
+			color: $primaryColor;
+		}
+
+	}
 
 	.emp-overView {
-
 		align-items: center;
 
 		.content {
@@ -20,27 +41,6 @@ $paddingHorizontal : 20px;
 			grid-template-columns: 1fr 1fr;
 			grid-column-gap: 10px;
 			grid-row-gap: 10px;
-
-			div {
-				text-align: center;
-				background: $background;
-				padding: 10px;
-				border-radius: 10px;
-				display: flex;
-				flex-direction: column;
-				justify-content: space-between;
-
-				b {
-					font-size: 1rem;
-					font-weight: 300;
-
-				}
-
-				p {
-					font-size: 1.5rem;
-					color: $primaryColor;
-				}
-			}
 		}
 	}
 
@@ -50,29 +50,6 @@ $paddingHorizontal : 20px;
 			grid-template-columns: 1fr 1fr 1fr 1fr;
 			grid-column-gap: 10px;
 			grid-row-gap: 10px;
-
-			div {
-				text-align: center;
-				background: $background;
-				padding: 10px;
-				border-radius: 10px;
-				display: flex;
-				flex-direction: column;
-				justify-content: space-between;
-
-				b {
-					font-size: 1rem;
-					font-weight: 300;
-
-				}
-
-				p {
-					font-size: 1.5rem;
-					color: $primaryColor;
-				}
-			}
 		}
 	}
-
-
 }

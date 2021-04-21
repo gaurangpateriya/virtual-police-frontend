@@ -19,3 +19,6 @@ export const GET_FIRS = 'GET_FIRS'
 
 //SOS
 export const GET_SOS = 'GET_SOS';
+
+//Nocs
+export const GET_NOCS = 'GET_NOCS';
