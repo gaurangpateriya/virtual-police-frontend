@@ -21,7 +21,7 @@ export const employeeRoles = {
 }
 
 
-export const drawerWidth = 240
+export const drawerWidth = 250
 export const colors = {
   light: {
     text: '#000',
@@ -66,5 +66,9 @@ export const nocStatus = {
 export const THEFT_TYPE = {
   VEHICLE_THEFT: 'Vehicle Theft',
   MOBILE_THEFT: 'Mobile Theft',
+}
 
+export const safeTravelStatus = {
+  ACTIVE: 'Active',
+  FINISHED: 'Finished',
 }

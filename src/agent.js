@@ -49,14 +49,16 @@ const Auth = {
   register: (data) => requests.post('/auth/register', data),
   forgotPassword: (data) => requests.post('/auth/forgot-password', data),
   resetPassword: (password) => requests.post('/auth/reset-password', password),
-  getHoldTypes: () => requests.get('/hold/get'),
+
+  getStations: () => requests.get('/station/get')
 };
 
 const Dashboard = {
-  getSosOverView: () => requests.get('/admin/sos/overview'),
-  getFirOverView: () => requests.get('/admin/fir/overview'),
-  getEmpOverView: () => requests.get('/admin/employee/overview'),
-  getNocOverView: () => requests.get('/admin/noc/overview'),
+  getSosOverView: (search = "") => requests.get(`/admin/sos/overview${search}`),
+  getSafeTravelOverView: (search = "") => requests.get(`/admin/safe-travel/overview${search}`),
+  getFirOverView: (search = "") => requests.get(`/admin/fir/overview${search}`),
+  getEmpOverView: (search = "") => requests.get(`/admin/employee/overview${search}`),
+  getNocOverView: (search = "") => requests.get(`/admin/noc/overview${search}`),
 
 };
 
@@ -93,7 +95,12 @@ const SosPage = {
 
 }
 
+const SafeTravel = {
 
+  getSafeTravel: (filter = "") => requests.get(`/admin/safe-travel/get${filter}`),
+  getSafeTravelDetails: (id) => requests.get(`/admin/safe-travel/get?id=${id}`),
+  updateSafeTravel: (data) => requests.post('/admin/safe-travel/update', data),
+}
 export default {
   setToken,
   requests,
@@ -104,6 +111,7 @@ export default {
   SosPage,
   UserDetails,
   Firs,
-  Nocs
+  Nocs,
+  SafeTravel
 
 };

@@ -1,7 +1,5 @@
 import React, { useMemo } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-
-import { useDispatch } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { ToastContainer } from 'react-toastify';
@@ -25,6 +23,9 @@ import FirDetails from './components/Fir/FirDetails';
 import NocPage from './components/Nocs/NocPage';
 import NocDetails from './components/Nocs/NocDetails';
 import SosPage from './components/Sos/SosPage';
+import SafeTravelPage from './components/SafeTravel/SafeTravelPage';
+import SafeTravelDetails from './components/SafeTravel/SafeTravelDetails';
+import { urls } from './constants/pageUrls';
 
 const isLogin = () => {
   const webToken = window.localStorage.getItem(WEB_TOKEN);
@@ -74,52 +75,62 @@ const App = ({ history }) => {
         <ConnectedRouter history={history}>
           <Switch>
             <Route path='/' component={Login} exact />
-            <Route path='/login' component={Login} exact />
+            <Route path={urls.LOGIN_PAGE} component={Login} exact />
 
-            <Route path='/forgot-password' component={ForgotPassword} exact />
+
             <Route
-              path='/reset-password/:token'
+              path={urls.FORGOT_PASSWORD}
               component={ResetPassword}
               exact
             />
 
             <PrivateRoute
-              path='/dashboard'
+              path={urls.DASHBOARD}
               component={Dashboard}
               exact
             />
             <PrivateRoute
-              path='/employees'
+              path={urls.EMPLOYESS_PAGE}
               component={Employees}
               exact
             />
             <PrivateRoute
-              path='/firs'
+              path={urls.FIRS_PAGE}
               component={FirPage}
               exact
             />
             <PrivateRoute
-              path='/nocs'
+              path={urls.NOC_PAGE}
               component={NocPage}
               exact
             />
             <PrivateRoute
-              path='/sos-requests'
+              path={urls.SOS_PAGE}
               component={SosPage}
               exact
             />
 
             <PrivateRoute
-              path='/noc/:id'
+              path={urls.NOC_DETAILS_PAGE}
               component={NocDetails}
               exact
             />
             <PrivateRoute
-              path='/firDetails/:id'
+              path={urls.FIR_DETAILS_PAGE}
               component={FirDetails}
               exact
             />
 
+            <PrivateRoute
+              path={urls.SAFE_TRAVEL_PAGE}
+              component={SafeTravelPage}
+              exact
+            />
+            <PrivateRoute
+              path={urls.SAFE_TRAVEL_DETAILS_PAGE}
+              component={SafeTravelDetails}
+              exact
+            />
           </Switch>
         </ConnectedRouter>
       </React.Suspense>

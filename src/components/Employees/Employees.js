@@ -11,11 +11,13 @@ import Employee from './Employee';
 import { GET_EMPLOYEES } from '../../constants/actionTypes';
 import { colors, employeeRoles } from '../../constants/otherConstants';
 import { useHistory } from 'react-router';
+import { urls } from '../../constants/pageUrls';
 // import { Link } from 'react-router-dom';
 
 
 const Employees = ({ location: { search } }) => {
   const classes = shiftStyles();
+  const user = useSelector(state => state.common.user)
   const [filters, setFilters] = useState("")
   const history = useHistory();
 
@@ -34,13 +36,14 @@ const Employees = ({ location: { search } }) => {
         setLoading(true);
         if (search) {
           setFilters(search.substring(0).split("=")[1])
+          search = search + `&&StationId=${user.StationId}`
 
           const res = await agent.Employees.getFilteredEmps(search)
           dispatch({ type: GET_EMPLOYEES, payload: res.data.data })
         } else {
+          let search = `?StationId=${user.StationId}`
           setFilters("")
-
-          const res = await agent.Employees.getEmployees()
+          const res = await agent.Employees.getFilteredEmps(search)
           dispatch({ type: GET_EMPLOYEES, payload: res.data.data })
         }
 
@@ -49,8 +52,6 @@ const Employees = ({ location: { search } }) => {
         setLoading(false)
         console.log(error, error.response)
       }
-
-
     })()
 
 
@@ -60,10 +61,10 @@ const Employees = ({ location: { search } }) => {
 
     if (newFilter) {
       if (newFilter === filters) {
-        history.push(`/employees`)
+        history.push(`${urls.EMPLOYESS_PAGE}`)
       } else {
         let searchString = `?role=${newFilter}`
-        history.push(`/employees${searchString}`)
+        history.push(`${urls.EMPLOYESS_PAGE}${searchString}`)
       }
     }
   }
@@ -86,7 +87,7 @@ const Employees = ({ location: { search } }) => {
             className='flex items-center justify-end'
           >
             {
-              Object.keys(employeeRoles).map((s, i) => (
+              Object.keys(employeeRoles).map((s) => (
                 <button
                   type='button'
                   className='ba br4 ml2 pa2  f7'

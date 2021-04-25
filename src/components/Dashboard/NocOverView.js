@@ -2,23 +2,28 @@ import React, { useState, useEffect } from 'react';
 import Loader from '../../common/components/Loader';
 import './Dashboard.css';
 import agent from '../../agent';
-import moment from 'moment';
-import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
-import { colors, nocStatus } from '../../constants/otherConstants'
+
+import { useSelector } from 'react-redux';
+
+import { nocStatus } from '../../constants/otherConstants'
 import { useHistory } from 'react-router';
+import { urls } from '../../constants/pageUrls'
 
 export default () => {
 
   const [nocOverView, setNocOverView] = useState([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
+  const user = useSelector(state => state.common.user)
 
   const history = useHistory()
 
   useEffect(() => {
     (async () => {
       setLoading(true)
-      const res = await agent.Dashboard.getNocOverView();
+      const search = `?StationId=${user.StationId}`
+
+      const res = await agent.Dashboard.getNocOverView(search);
       const data = res.data.data
       const temp = {}
       let total = 0
@@ -43,7 +48,7 @@ export default () => {
       <div className='card content ' >
         {
           Object.keys(nocOverView).map(o => (
-            <div key={o.id} className='pointer div' onClick={() => history.push(`/nocs?status=${o}`)} >
+            <div key={o.id} className='pointer div' onClick={() => history.push(`${urls.NOC_PAGE}?status=${o}`)} >
               <b>{o} </b>
               <p>{nocOverView[o]} </p>
             </div>

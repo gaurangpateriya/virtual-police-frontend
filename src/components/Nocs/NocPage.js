@@ -8,6 +8,7 @@ import agent from '../../agent';
 
 
 import { shiftStyles } from '../../common/commonUseStyles';
+import { urls } from '../../constants/pageUrls'
 
 import { GET_NOCS } from '../../constants/actionTypes'
 import moment from 'moment';
@@ -18,7 +19,7 @@ import { colors, nocStatus } from '../../constants/otherConstants';
 const Noc = ({ noc }) => {
   const history = useHistory();
   return (
-    <div className='noc pointer' onClick={() => history.push(`/noc/${noc.id}`)}>
+    <div className='noc pointer' onClick={() => history.push(`${urls.NOC_PAGE}/${noc.id}`)}>
       <div className='header'>
         <p> Status: {noc.status} </p>
         <p> Application Date: {moment(noc.createdAt).format("DD-MMM-YYYY")} </p>
@@ -41,6 +42,7 @@ const Noc = ({ noc }) => {
 
 const NocPage = ({ location: { search } }) => {
   const classes = shiftStyles();
+  const user = useSelector(state => state.common.user)
 
   const nocs = useSelector(state => state.NocReducers.nocs)
   const [filters, setFilters] = useState("")
@@ -59,11 +61,15 @@ const NocPage = ({ location: { search } }) => {
         if (search) {
 
           setFilters(search.substring(0).split("=")[1])
+          search = search + `&&StationId=${user.StationId}`
+
           const res = await agent.Nocs.getFilteredNocs(search)
           dispatch({ type: GET_NOCS, payload: res.data.data })
 
         } else {
-          const res = await agent.Nocs.getNocs()
+          let search = `?StationId=${user.StationId}`
+
+          const res = await agent.Nocs.getFilteredNocs(search)
           dispatch({ type: GET_NOCS, payload: res.data.data })
           setFilters("")
         }
@@ -79,10 +85,10 @@ const NocPage = ({ location: { search } }) => {
 
     if (newFilter) {
       if (newFilter === filters) {
-        history.push(`/nocs`)
+        history.push(`${urls.NOC_PAGE}`)
       } else {
         let searchString = `?status=${newFilter}`
-        history.push(`/nocs${searchString}`)
+        history.push(`${urls.NOC_PAGE}${searchString}`)
       }
     }
   }
@@ -101,7 +107,7 @@ const NocPage = ({ location: { search } }) => {
               className='flex items-center'
             >
               {
-                Object.keys(nocStatus).map((s, i) => (
+                Object.keys(nocStatus).map((s) => (
                   <button
                     type='button'
                     className='ba br4 ml2 pa2  f7'

@@ -22,3 +22,7 @@ export const GET_SOS = 'GET_SOS';
 
 //Nocs
 export const GET_NOCS = 'GET_NOCS';
+
+
+//Safe traveller
+export const GET_SAFE_TRAVELS = 'GET_SAFE_TRAVELS';

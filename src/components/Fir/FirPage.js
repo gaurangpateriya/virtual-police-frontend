@@ -11,14 +11,15 @@ import { shiftStyles } from '../../common/commonUseStyles';
 
 import { GET_FIRS } from '../../constants/actionTypes'
 import moment from 'moment';
-import { useHistory, useLocation } from 'react-router';
+import { useHistory } from 'react-router';
 import { colors, firStatus } from '../../constants/otherConstants';
-// import { Link } from 'react-router-dom';
+
+import { urls } from '../../constants/pageUrls'
 
 const Fir = ({ fir }) => {
   const history = useHistory();
   return (
-    <div className='fir pointer' onClick={() => history.push(`/firDetails/${fir.id}`)}>
+    <div className='fir pointer' onClick={() => history.push(`${urls.FIRS_PAGE}/${fir.id}`)}>
       <div className='header'>
         <p> Status: {fir.status} </p>
         <p> Date: {moment(fir.createdAt).format("DD-MMM-YYYY")} </p>
@@ -53,7 +54,7 @@ const Fir = ({ fir }) => {
 
 const FirPage = ({ location: { search } }) => {
   const classes = shiftStyles();
-
+  const user = useSelector(state => state.common.user)
   const firs = useSelector(state => state.FirReducers.firs)
   const [filters, setFilters] = useState("")
   const drawerOpen = useSelector(state => state.common.drawerOpen)
@@ -71,11 +72,13 @@ const FirPage = ({ location: { search } }) => {
         if (search) {
 
           setFilters(search.substring(0).split("=")[1])
+          search = search + `&&StationId=${user.StationId}`
           const res = await agent.Firs.getFilteredFirs(search)
           dispatch({ type: GET_FIRS, payload: res.data.data })
 
         } else {
-          const res = await agent.Firs.getFirs()
+          let search = `?StationId=${user.StationId}`
+          const res = await agent.Firs.getFilteredFirs(search)
           dispatch({ type: GET_FIRS, payload: res.data.data })
           setFilters("")
         }
@@ -113,7 +116,7 @@ const FirPage = ({ location: { search } }) => {
               className='flex items-center'
             >
               {
-                Object.keys(firStatus).map((s, i) => (
+                Object.keys(firStatus).map((s) => (
                   <button
                     type='button'
                     className='ba br4 ml2 pa2  f7'

@@ -2,17 +2,20 @@ import React, { useState, useEffect } from 'react';
 import Loader from '../../common/components/Loader';
 import './Dashboard.css';
 import agent from '../../agent';
-import moment from 'moment';
-import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
-import { colors, employeeRoles, ERROR_MSG } from '../../constants/otherConstants'
+
+
+import { employeeRoles, ERROR_MSG } from '../../constants/otherConstants'
+import { urls } from '../../constants/pageUrls'
 import { useHistory } from 'react-router';
 import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
 
 export default () => {
 
   const [empOverView, setEmpOverView] = useState([])
   const [total, setTotal] = useState([])
   const [loading, setLoading] = useState(false);
+  const user = useSelector(state => state.common.user)
 
   const history = useHistory()
 
@@ -21,7 +24,8 @@ export default () => {
       try {
 
         setLoading(true)
-        const res = await agent.Dashboard.getEmpOverView();
+        const search = `?StationId=${user.StationId}`
+        const res = await agent.Dashboard.getEmpOverView(search);
         const data = res.data.data
         const temp = {}
         let total = 0
@@ -51,7 +55,7 @@ export default () => {
       <div className='card content ' >
         {
           Object.keys(empOverView).map(o => (
-            <div key={o.id} className='pointer div' onClick={() => history.push(`/employees?role=${o}`)} >
+            <div key={o.id} className='pointer div' onClick={() => history.push(`${urls.EMPLOYESS_PAGE}?role=${o}`)} >
               <b>{o} </b>
               <p>{empOverView[o]} </p>
             </div>

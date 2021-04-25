@@ -60,6 +60,12 @@ select {
   line-height: inherit;
 }
 
+select option {
+  background-color: #18191A;
+  padding: 5px;
+  font-size: 0.8rem;
+}
+
 textarea {
   background-color: transparent;
   padding: 10px;

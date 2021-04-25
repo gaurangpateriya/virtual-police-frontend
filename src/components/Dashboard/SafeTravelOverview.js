@@ -5,13 +5,13 @@ import agent from '../../agent';
 import { useSelector } from 'react-redux';
 
 
-import { firStatus } from '../../constants/otherConstants'
+import { safeTravelStatus } from '../../constants/otherConstants'
 import { useHistory } from 'react-router';
 import { urls } from '../../constants/pageUrls'
 
 export default () => {
 
-  const [firOverView, setFirOverView] = useState([]);
+  const [safeTravel, setSafeTravelOverview] = useState([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
   const user = useSelector(state => state.common.user)
@@ -23,7 +23,7 @@ export default () => {
       setLoading(true)
       const search = `?StationId=${user.StationId}`
 
-      const res = await agent.Dashboard.getFirOverView(search);
+      const res = await agent.Dashboard.getSafeTravelOverView(search);
       const data = res.data.data
       const temp = {}
       let total = 0
@@ -31,26 +31,26 @@ export default () => {
         temp[d.status] = d.count
       })
 
-      Object.keys(firStatus).forEach(k => {
-        k = firStatus[k]
+      Object.keys(safeTravelStatus).forEach(k => {
+        k = safeTravelStatus[k]
         temp[k] = temp[k] ? temp[k] : 0
         total += Number(temp[k])
       })
       setTotal(total)
-      setFirOverView(temp);
+      setSafeTravelOverview(temp);
       setLoading(false)
     })()
   }, [])
 
   return (
     <div className=" relative fir-overView">
-      <h3 className='tc '>FIR Overview</h3>
+      <h3 className='tc '>Safe Travel Overview</h3>
       <div className='card content ' >
         {
-          Object.keys(firOverView).map(o => (
-            <div key={o.id} className='pointer div' onClick={() => history.push(`${urls.FIRS_PAGE}?status=${o}`)} >
+          Object.keys(safeTravel).map(o => (
+            <div key={o.id} className='pointer div' onClick={() => history.push(`${urls.SAFE_TRAVEL_PAGE}?status=${o}`)} >
               <b>{o} </b>
-              <p>{firOverView[o]} </p>
+              <p>{safeTravel[o]} </p>
             </div>
           ))
         }

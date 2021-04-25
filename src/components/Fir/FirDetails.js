@@ -25,11 +25,8 @@ const FirDetails = ({ match: { params: { id } } }) => {
 
   const drawerOpen = useSelector(state => state.common.drawerOpen)
   const [loading, setLoading] = useState(false);
-  const [mobileView, setMobileView] = useState(false);
-
-  const resize = () => {
-    setMobileView(window.innerWidth <= 600);
-  };
+  const [addRemark, setAddRemark] = useState(false)
+  const [remark, setRemark] = useState(false)
 
 
 
@@ -38,10 +35,6 @@ const FirDetails = ({ match: { params: { id } } }) => {
   useEffect(() => {
     (async () => {
       try {
-        resize();
-
-        window.addEventListener('resize', resize);
-        console.log(id)
         let fir = allfirs.find(f => f.id === id)
         if (!fir) {
           setLoading(true);
@@ -53,6 +46,7 @@ const FirDetails = ({ match: { params: { id } } }) => {
           }
         }
         setFir(fir);
+        setRemark(fir.remark)
         if (employees.length === 0) {
 
           setLoading(true);
@@ -75,7 +69,7 @@ const FirDetails = ({ match: { params: { id } } }) => {
     const data = { id: fir.id, EmployeeId: emp, status: firStatus.ACTIVE }
     setLoading(true);
 
-    const res = await agent.Firs.updateFir(data);
+    await agent.Firs.updateFir(data);
     setLoading(false);
 
     const updatedFir = { ...fir, EmployeeId: emp, Employee: employees.find(e => e.id === emp), status: firStatus.ACTIVE }
@@ -90,6 +84,34 @@ const FirDetails = ({ match: { params: { id } } }) => {
 
     dispatch({ type: GET_FIRS, payload: temp })
   }
+  const changeAddRemark = (value) => {
+    if (!value) {
+
+      setRemark(fir.remark)
+    }
+    setAddRemark(value)
+  }
+  const updateRemark = async () => {
+    const data = { id: fir.id, remark }
+    setLoading(true);
+
+    await agent.Firs.updateFir(data);
+    setLoading(false);
+    setAddRemark(false);
+
+    const updatedFir = { ...fir, ...data }
+    setFir(updatedFir);
+
+    const temp = allfirs.map(f => {
+      if (f.id === updatedFir.id) {
+        return updatedFir
+      }
+      return f;
+    })
+
+    dispatch({ type: GET_FIRS, payload: temp })
+  }
+
   return (
     <>
       <AuthNavBar />
@@ -138,7 +160,7 @@ const FirDetails = ({ match: { params: { id } } }) => {
                     <p>No Images present</p>
                   ) : fir.FirImages.map(img => (
 
-                    <a target="_blank" href={img.image} >
+                    <a target="_blank" className='ml2 mr2 block' href={img.image} >
                       <p className='tc'>{img.name}</p>
                       <img src={img.image} />
                       <div>
@@ -176,8 +198,31 @@ const FirDetails = ({ match: { params: { id } } }) => {
                 <>
                   <p>{fir.Employee.name}</p>
                   <p className='bb w-100 pb2'>{fir.Employee.mobileNo}</p>
-                  <b  >Officer's Remark</b>
-                  <p>{fir.remark || "No remark is added"} </p>
+                  <div className='flex items-center justify-between'>
+
+                    <b >Officer's Remark</b>
+                    <button
+                      className={addRemark ? 'red-btn f6 pa2' : 'primary-btn pa2 f6'}
+                      onClick={() => changeAddRemark(!addRemark)} >
+                      {addRemark ? 'Cancel' : "Update Remark"}
+                    </button>
+                  </div>
+                  {
+                    addRemark ? (
+                      <div>
+                        <textarea
+                          className='w-100'
+                          onChange={(e) => setRemark(e.target.value)}
+                        >
+                          {remark}
+                        </textarea>
+                        <button className='primary-btn f6 mt2 pa2' onClick={updateRemark} > Update Remark </button>
+                      </div>
+                    ) : (
+
+                      <p style={{ overflowWrap: 'break-word' }} >{fir.remark || "No remark is added"} </p>
+                    )
+                  }
                 </>
               ) : (
                 <>
