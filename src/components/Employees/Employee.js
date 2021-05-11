@@ -19,6 +19,8 @@ import { GET_EMPLOYEES } from '../../constants/actionTypes';
 const Employee = (props) => {
 
   const classes = dialogStyles()
+  const user = useSelector(state => state.common.user)
+
   const [employee, setEmployee] = useState({})
   const [isUpdate, setIsUpdate] = useState(false);
   const [openEmployee, setOpenEmployee] = useState(false)
@@ -72,12 +74,13 @@ const Employee = (props) => {
   const createEmployee = (e) => {
     e.preventDefault();
     setError(null)
-    if (!validateEmp(employee)) {
+    const data = { ...employee, StationId: user.StationId }
+    if (!validateEmp(data)) {
       return
     }
     setLoading(true);
     if (!isUpdate) {
-      agent.Employees.addEmployee(employee).then(res => {
+      agent.Employees.addEmployee(data).then(res => {
         setLoading(false);
         const tempEmp = [...employees, res.data.data]
         dispatch({ type: GET_EMPLOYEES, payload: tempEmp });
@@ -85,15 +88,21 @@ const Employee = (props) => {
         togelEmployeeDialog()
       }).catch(err => {
         console.log(err, err.response)
-        toast.error(ERROR_MSG);
+        if (err.response.data && err.response.data.message && err.response.data.message.errors && err.response.data.message.errors.length > 0) {
+          console.log(err.response.data.message.errors[0])
+          toast.error(err.response.data.message.errors[0].message);
+        } else {
+
+          toast.error(ERROR_MSG);
+        }
         setLoading(false);
       })
     } else {
-      agent.Employees.updateEmployee(employee.id, employee).then(res => {
+      agent.Employees.updateEmployee(data.id, data).then(res => {
         setLoading(false);
         const tempEmp = employees.map(e => {
           if (e.id === employee.id) {
-            return employee
+            return data
           }
           return e;
         })
